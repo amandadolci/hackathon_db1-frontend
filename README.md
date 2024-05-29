@@ -1,1 +1,1 @@
-# Threads + Co.
+# Threads & Co.
