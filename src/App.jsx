@@ -20,9 +20,18 @@ function App() {
 		try {
 			const { data } = await api.get();
 			setProductList(data);
-			updateShortProductList(data);
+			setProductList6([...data].splice(0, 6));
+			// updateShortProductList(data);
 			setFavoriteList(data.filter(product => product.favorite === true));
-			// console.log(data);
+		} catch (error) {
+			console.log(error.response.data.message);
+		}
+	}
+
+	async function favoriteProduct(id, boolean) {
+		try {
+			await api.patch(`/${id}`, { favorite: boolean });
+			loadProducts();
 		} catch (error) {
 			console.log(error.response.data.message);
 		}
@@ -40,18 +49,22 @@ function App() {
 	return (
 		<>
 			<GlobalStyle />
-			<Header />
+			<Header setShowFavoriteList={setShowFavoriteList} setShowFullList={setShowFullList} />
 			<main>
-				{showFullList ? (
-					<ProductList productList={productList} />
-				) : showFavoriteList ? (
-					<ProductList productList={favoriteList} />
-				) : (
-					<ProductList productList={productList6} />
-				)}
-				<button onClick={() => (showFullList ? setShowFullList(false) : setShowFullList(true))}>
-					{showFullList ? 'Ver menos' : 'Ver todos'}
-				</button>
+				<section className='section-product-list'>
+					{showFullList ? (
+						<ProductList productList={productList} favoriteProduct={favoriteProduct} />
+					) : showFavoriteList ? (
+						<ProductList productList={favoriteList} favoriteProduct={favoriteProduct} />
+					) : (
+						<ProductList productList={productList6} favoriteProduct={favoriteProduct} />
+					)}
+					{showFavoriteList ? null : (
+						<button onClick={() => (showFullList ? setShowFullList(false) : setShowFullList(true))}>
+							{showFullList ? 'Ver menos' : 'Ver todos'}
+						</button>
+					)}
+				</section>
 			</main>
 			<Footer />
 		</>
