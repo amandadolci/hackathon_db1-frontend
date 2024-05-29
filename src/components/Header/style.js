@@ -22,6 +22,7 @@ export const StyledHeader = styled.header`
 	.header-container-nav {
 		display: flex;
 		gap: 0.75rem;
+		padding-top: 0.5rem;
 	}
 
 	.header-nav-icon {
