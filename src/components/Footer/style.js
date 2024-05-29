@@ -20,9 +20,7 @@ export const StyledFooter = styled.footer`
 	.footer-container-info {
 		display: flex;
 		flex-direction: column;
-	}
-
-	.footer-container-info p {
+		align-items: center;
 		font-size: 0.875rem;
 	}
 `;
