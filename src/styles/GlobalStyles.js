@@ -46,4 +46,12 @@ main {
 	margin: 0 auto;
 	padding: 0rem 4rem;
 }
-  `;
+
+.section-product-list {
+  width: 100%;
+  display: flex;
+  align-content: center;
+  flex-direction:column;
+  gap: 2.25rem;
+}
+`;
