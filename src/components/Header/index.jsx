@@ -1,7 +1,11 @@
-import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { ProductContext } from '../../contexts/ProductProvider';
 import { StyledHeader } from './style';
+import { Link } from 'react-router-dom';
 
-export function Header({ setShowFavoriteList, setShowFullList }) {
+export function Header() {
+	const { setShowFullList, setShowFavoriteList } = useContext(ProductContext);
+
 	return (
 		<StyledHeader>
 			<Link className='header-container-logo' to='/' onClick={() => setShowFavoriteList(false)}>
