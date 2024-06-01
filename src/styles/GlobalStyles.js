@@ -36,6 +36,7 @@ body {
 }
 
 #root {
+  height: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -45,5 +46,6 @@ body {
 main {
 	margin: 0 auto;
 	padding: 0rem 4rem;
+	min-height: 75vh;
 }
 `;
