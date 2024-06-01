@@ -4,11 +4,17 @@ import { StyledHeader } from './style';
 import { Link } from 'react-router-dom';
 
 export function Header() {
-	const { setShowFullList, setShowFavoriteList } = useContext(ProductContext);
+	const { setShowFullList, setShowFavoriteList, setProductObject } = useContext(ProductContext);
 
 	return (
 		<StyledHeader>
-			<Link className='header-container-logo' to='/' onClick={() => setShowFavoriteList(false)}>
+			<Link
+				className='header-container-logo'
+				to='/'
+				onClick={() => {
+					setShowFavoriteList(false);
+					setProductObject({});
+				}}>
 				<h1>Threads & Co.</h1>
 			</Link>
 			<nav className='header-container-nav'>
@@ -21,6 +27,7 @@ export function Header() {
 					onClick={() => {
 						setShowFavoriteList(true);
 						setShowFullList(false);
+						setProductObject({});
 					}}>
 					<span className='material-symbols-rounded'>favorite</span>
 				</Link>
