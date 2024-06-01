@@ -4,9 +4,12 @@ export const StyledProductList = styled.ul`
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	justify-content: space-evenly;
-	column-gap: 1rem;
-	row-gap: 2.25rem;
+	/* justify-content: space-evenly; */
+	justify-content: flex-start;
+	/* column-gap: 1rem;
+	row-gap: 2.25rem; */
+	gap: 2.25rem;
+	margin-left: 4%;
 `;
 
 export const StyledProductCard = styled.li`

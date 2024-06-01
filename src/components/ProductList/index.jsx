@@ -1,8 +1,11 @@
-// import { ProductCard } from '../ProductCard';
-// import { useState } from 'react';
+import { useContext } from 'react';
+import { ProductContext } from '../../contexts/ProductProvider';
 import { StyledProductList, StyledProductCard } from './style';
+import { useNavigate } from 'react-router-dom';
 
-export function ProductList({ productList, favoriteProduct }) {
+export function ProductList({ productList }) {
+	const navigate = useNavigate();
+	const { favoriteProduct, getProductById } = useContext(ProductContext);
 	// const applyClass = index =>
 	// 	index === productList.length - 1
 	// 		? 'product-container-card last-row-item'
@@ -11,12 +14,21 @@ export function ProductList({ productList, favoriteProduct }) {
 		favorite ? 'material-symbols-rounded material-symbols-filled' : 'material-symbols-rounded';
 
 	return (
-		<StyledProductList className='product-container-list'>
+		<StyledProductList className='product-list-container'>
 			{productList.map(({ id, name, image_url, price, favorite }, index) => (
-				<StyledProductCard key={id} /* className={applyClass(index)} */>
+				<StyledProductCard
+					key={id}
+					onClick={async () => {
+						navigate(`/products/${name.replaceAll(' ', '-').toLowerCase()}/${id}`);
+						await getProductById(id);
+					}} /* className={applyClass(index)} */
+				>
 					<figure className='product-card-img'>
 						<button
-							onClick={() => (favorite ? favoriteProduct(id, false) : favoriteProduct(id, true))}>
+							onClick={e => {
+								e.stopPropagation();
+								favorite ? favoriteProduct(id, false) : favoriteProduct(id, true);
+							}}>
 							<span className={applyFavoriteClass(favorite)}>favorite</span>
 						</button>
 						<img src={`http://localhost:3000${image_url}`} alt={name} />
@@ -30,12 +42,3 @@ export function ProductList({ productList, favoriteProduct }) {
 		</StyledProductList>
 	);
 }
-
-// <ProductCard
-// 	key={id}
-// 	id={id}
-// 	name={name}
-// 	image_url={image_url}
-// 	price={price}
-// 	favorite={favorite}
-// />
