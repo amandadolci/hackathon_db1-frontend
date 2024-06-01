@@ -48,4 +48,11 @@ main {
 	padding: 0rem 4rem;
 	min-height: 75vh;
 }
+
+.section-product-loading {
+  min-height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 `;
