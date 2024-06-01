@@ -9,6 +9,7 @@ export function ProductProvider({ children }) {
 	const [favoriteList, setFavoriteList] = useState([]);
 	const [showFullList, setShowFullList] = useState(false);
 	const [showFavoriteList, setShowFavoriteList] = useState(false);
+	const [productObject, setProductObject] = useState({});
 
 	const getRandomProducts = products => products.sort(() => 0.5 - Math.random()).slice(0, 6);
 
@@ -33,6 +34,16 @@ export function ProductProvider({ children }) {
 		try {
 			await api.patch(`/${id}`, { favorite: boolean });
 			loadProducts();
+			if (productObject) setProductObject({ ...productObject, favorite: boolean });
+		} catch (error) {
+			console.log(error.response.data.message);
+		}
+	}
+
+	async function getProductById(id) {
+		try {
+			const { data } = await api.get(`/${id}`);
+			setProductObject(data);
 		} catch (error) {
 			console.log(error.response.data.message);
 		}
@@ -56,6 +67,9 @@ export function ProductProvider({ children }) {
 				setShowFullList,
 				showFavoriteList,
 				setShowFavoriteList,
+				productObject,
+				setProductObject,
+				getProductById,
 				loadProducts,
 				favoriteProduct,
 			}}>
