@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { Homepage } from '../pages/Homepage';
-// import { Homepage } from '../pages/Homepage/index';
+import { ProductDetails } from '../pages/ProductDetails';
 import { PageNotFound } from '../pages/PageNotFound';
 
 export function MainRoutes() {
@@ -8,9 +8,9 @@ export function MainRoutes() {
 		<Routes>
 			<Route path='/' element={<Homepage />} />
 			<Route path='/favorites' element={<Homepage />} />
-			{/* <Route path='/products/:$' element={<Homepage />} /> */}
-			<Route path='/404' element={<PageNotFound />} />
-			<Route path='*' element={<Navigate to='/404' />} />
+			<Route path='/products/:name/:id' element={<ProductDetails />} />
+			<Route path='/404-page-not-found' element={<PageNotFound />} />
+			<Route path='*' element={<Navigate to='/404-page-not-found' />} />
 		</Routes>
 	);
 }
