@@ -15,14 +15,15 @@ export function Header() {
 				<button className='header-nav-icon'>
 					<span className='material-symbols-rounded'>search</span>
 				</button>
-				<button
+				<Link
 					className='header-nav-icon'
+					to={'/favorites'}
 					onClick={() => {
 						setShowFavoriteList(true);
 						setShowFullList(false);
 					}}>
 					<span className='material-symbols-rounded'>favorite</span>
-				</button>
+				</Link>
 				<button className='header-nav-icon'>
 					<span className='material-symbols-rounded'>shopping_cart</span>
 				</button>
