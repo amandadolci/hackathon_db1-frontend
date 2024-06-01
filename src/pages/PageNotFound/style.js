@@ -9,6 +9,9 @@ export const Styled404Container = styled.section`
 		font-family: 'Permanent Marker', cursive;
 		color: #3f4045;
 	}
+	a:hover {
+		text-decoration: underline;
+	}
 	h1 {
 		font-size: 2.625rem;
 	}
