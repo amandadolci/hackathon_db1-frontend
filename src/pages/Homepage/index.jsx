@@ -13,7 +13,6 @@ export function Homepage() {
 		showFullList,
 		setShowFullList,
 		showFavoriteList,
-		favoriteProduct,
 	} = useContext(ProductContext);
 
 	return (
@@ -22,11 +21,11 @@ export function Homepage() {
 			<main>
 				<StyledHomepageMainSection className='section-product-list'>
 					{showFullList ? (
-						<ProductList productList={productList} favoriteProduct={favoriteProduct} />
+						<ProductList productList={productList} />
 					) : showFavoriteList ? (
-						<ProductList productList={favoriteList} favoriteProduct={favoriteProduct} />
+						<ProductList productList={favoriteList} />
 					) : (
-						<ProductList productList={productList6} favoriteProduct={favoriteProduct} />
+						<ProductList productList={productList6} />
 					)}
 					{showFavoriteList ? null : (
 						<button
