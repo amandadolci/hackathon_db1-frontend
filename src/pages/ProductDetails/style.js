@@ -38,6 +38,11 @@ export const StyledProductDetailsContainer = styled.section`
 			font-size: 1.125rem;
 		}
 	}
+
+	.product-info-description {
+		text-align: justify;
+	}
+
 	.product-info-actions {
 		width: 100%;
 		display: flex;
