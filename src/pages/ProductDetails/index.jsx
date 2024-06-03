@@ -24,11 +24,22 @@ export function ProductDetails() {
 		);
 	}
 
+	function CálculoParcelas({ total }) {
+		const quantidadeMaximaDeParcelas = Math.floor(total / 10);
+		const totalComJuros = total + total * quantidadeMaximaDeParcelas * 0.0199;
+		const totalDasParcelasComJuros = (totalComJuros / quantidadeMaximaDeParcelas).toFixed(2);
+		return (
+			<small>
+				até {quantidadeMaximaDeParcelas}x de R${totalDasParcelasComJuros} com juros de 1.99%am
+			</small>
+		);
+	}
+
 	const productPriceInReais = price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-	const productInstallmentValues = (price / 6).toLocaleString('pt-BR', {
-		style: 'currency',
-		currency: 'BRL',
-	});
+	// const productInstallmentValues = (price / 6).toLocaleString('pt-BR', {
+	// 	style: 'currency',
+	// 	currency: 'BRL',
+	// });
 
 	return (
 		<>
@@ -44,7 +55,8 @@ export function ProductDetails() {
 							<h2>
 								{productPriceInReais} <small>à vista</small>
 							</h2>
-							<small>{`ou ${productInstallmentValues} em até 6x sem juros`}</small>
+							{/* <small>{`ou ${productInstallmentValues} em até 6x sem juros`}</small> */}
+							<CálculoParcelas total={price} />
 						</div>
 						<div className='product-info-description'>
 							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi nostrum incidunt
