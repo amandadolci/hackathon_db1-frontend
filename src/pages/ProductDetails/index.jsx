@@ -24,13 +24,13 @@ export function ProductDetails() {
 		);
 	}
 
-	function CálculoParcelas({ total }) {
+	function InstallmentValues({ total }) {
 		const quantidadeMaximaDeParcelas = Math.floor(total / 10);
 		const totalComJuros = total + total * quantidadeMaximaDeParcelas * 0.0199;
 		const totalDasParcelasComJuros = (totalComJuros / quantidadeMaximaDeParcelas).toFixed(2);
 		return (
 			<small>
-				até {quantidadeMaximaDeParcelas}x de R${totalDasParcelasComJuros} com juros de 1.99%am
+				até {quantidadeMaximaDeParcelas}x de R$ {totalDasParcelasComJuros} com juros de 1.99% a.m.
 			</small>
 		);
 	}
@@ -56,7 +56,7 @@ export function ProductDetails() {
 								{productPriceInReais} <small>à vista</small>
 							</h2>
 							{/* <small>{`ou ${productInstallmentValues} em até 6x sem juros`}</small> */}
-							<CálculoParcelas total={price} />
+							<InstallmentValues total={price} />
 						</div>
 						<div className='product-info-description'>
 							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi nostrum incidunt
